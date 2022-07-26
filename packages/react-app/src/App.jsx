@@ -31,6 +31,7 @@ import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
+import Debt from "./views/Debt";
 
 const { ethers } = require("ethers");
 /*
@@ -305,6 +306,9 @@ function App(props) {
         <Menu.Item key="/subgraph">
           <Link to="/subgraph">Subgraph</Link>
         </Menu.Item>
+        <Menu.Item key="/debt">
+          <Link to="/debt">Debt</Link>
+        </Menu.Item>
       </Menu>
 
       <Switch>
@@ -378,6 +382,19 @@ function App(props) {
             subgraphUri={props.subgraphUri}
             tx={tx}
             writeContracts={writeContracts}
+            mainnetProvider={mainnetProvider}
+          />
+        </Route>
+        <Route path="/debt">
+          <Debt
+            tx={tx}
+            localProvider={localProvider}
+            yourLocalBalance={yourLocalBalance}
+            price={price}
+            writeContracts={writeContracts}
+            readContracts={readContracts}
+            purpose={purpose}
+            address={address}
             mainnetProvider={mainnetProvider}
           />
         </Route>
